@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <!-- create a calculator with 0-9 as the numbers
+÷   Division
+×   Multiplication
++   Addition
+−   Subtraction
+=   Calculate
++/-   Plus/minus toggles the pos/neg sign of the displayed number
+mc   Memory clear
+mr   Memory recall
+m-   Memory minus
+m+   Memory plus
+CE   Clear entry
+AC   All clear
+√x   Square root
+%   Percentage
+π   pi = 3.1415926536
+xy   Exponent
+R2   Round to 2 decimals (cents)
+R0   Round to 0 decimals (dollars)
+Use your delete/backspace key to delete one character at a time from the right
+Using a keyboard, backspace with the delete button
+Using a touchscreen, on a phone or tablet, tap into the display then use the virtual keyboard delete button
+To copy, highlight the results in the display window and copy to your clipboard
+    
+    -->
+    <div class="calculator">
+        <div class="display">
+            <div class="display result">0</div>
+        </div>
+
+        <div class="buttons">
+            <!-- <button class="button button--function" data-type="clear">AC</button> -->
+            <button class="button button--operator" data-type="memory-clear">mc</button>
+            <button class="button button--operator" data-type="memory-recall">mr</button>
+            <button class="button button--operator" data-type="memory-plus">m+</button>
+            <button class="button button--operator" data-type="memory-minus">m-</button>
+            <button class="button button--operator" data-type="square-root">√x</button>
+            <button class="button button--function" data-type="delete">CE</button>
+            <button class="button button--function" data-type="percent">%</button>
+            <button class="button button--operator" data-type="divide">÷</button>
+            <button class="button" data-type="number">7</button>
+            <button class="button" data-type="number">8</button>
+            <button class="button" data-type="number">9</button>
+            <button class="button button--operator" data-type="multiply">x</button>
+            <button class="button" data-type="number">4</button>
+            <button class="button" data-type="number">5</button>
+            <button class="button" data-type="number">6</button>
+            <button class="button button--operator" data-type="subtract">-</button>
+            <button class="button" data-type="number">1</button>
+            <button class="button" data-type="number">2</button>
+            <button class="button" data-type="number">3</button>
+            <button class="button button--operator" data-type="add">+</button>
+            <button class="button button--function" data-type="plus-minus">+/-</button>
+            <button class="button" data-type="number">0</button>
+            <button class="button" data-type="decimal">.</button>
+            <button class="button button--operator" data-type="calculate">=</button>
+            <button class="button button--operator" data-type="exponent">xy</button>
+            <button class="button button--operator" data-type="pi">π</button>
+            <button class="button button--operator" data-type="round-x">R0</button>
+            <button class="button button--operator" data-type="round-d">R2</button>
+        </div>
+    </div>
+        
+
+   
+    <!-- link jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

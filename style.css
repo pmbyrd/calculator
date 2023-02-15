@@ -1,0 +1,67 @@
+/* 
+all buttons should be the same size use flex box to make sure no matter what the size of the screen is the buttons will be the same size
+!important
+only for buttons per row
+!important
+the display class should be stretched to fit the width of the container
+!important
+numbers blue background
+!important
+operators use purple background
+!important
+functions use pink background
+*/
+
+/* Path: calculator/style.css */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  background-color: lightblue;
+  color: #fff;
+  width: 100%;
+  max-width: 400px;
+  max-height: 800px;
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.display {
+  align-self: stretch;
+  background-color: #fff;
+  color: #000;
+  text-align: right;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+/* fill the row */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* align-content: center; */
+}
+
+
+.buttons > .button {
+  flex-basis: calc(100% / 4);
+  
+}
+
+
+
+
