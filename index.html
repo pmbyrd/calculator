@@ -1,89 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tourney&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Calculator</title>
-</head>
-<body>
-    <!-- create a calculator with 0-9 as the numbers
-÷   Division
-×   Multiplication
-+   Addition
-−   Subtraction
-=   Calculate
-+/-   Plus/minus toggles the pos/neg sign of the displayed number
-mc   Memory clear
-mr   Memory recall
-m-   Memory minus
-m+   Memory plus
-CE   Clear entry
-AC   All clear
-√x   Square root
-%   Percentage
-π   pi = 3.1415926536
-xy   Exponent
-R2   Round to 2 decimals (cents)
-R0   Round to 0 decimals (dollars)
-Use your delete/backspace key to delete one character at a time from the right
-Using a keyboard, backspace with the delete button
-Using a touchscreen, on a phone or tablet, tap into the display then use the virtual keyboard delete button
-To copy, highlight the results in the display window and copy to your clipboard
-    
-    -->
-
-
-    
-
+  </head>
+  <body>
     <h1>Calculator</h1>
-   <div class="container">
-    <div class="calculator">
+    <div class="container">
+      <div class="calculator">
         <div class="display">
-            <div class="display result">0</div>
+          <div class="display result">0</div>
         </div>
         <div class="pad">
-            <input type="button" value="mc" class="memory memory-clear">
-            <input type="button" value="mr" class="memory memory-recall">
-            <input type="button" value="m+" class="memory memory-plus">
-            <input type="button" value="m-" class="memory memory-minus">
-            <input type="button" value="√x" class="math-func square-root">
-            <input type="reset" value="CE" class="clear clear-entry">
-            <input type="button" value="%" class="math-func percent">
-            <input type="button" value="÷" class="math-func divide">
-            <input type="button" value="7" class="number seven">
-            <input type="button" value="8" class="number eight">
-            <input type="button" value="9" class="number nine">
-            <input type="button" value="x" class="math-func multiply">
-            <input type="button" value="4" class="number four">
-            <input type="button" value="5" class="number five">
-            <input type="button" value="6" class="number six">
-            <input type="button" value="-" class="math-func subtract">
-            <input type="button" value="1" class="number one">
-            <input type="button" value="2" class="number two">
-            <input type="button" value="3" class="number three">
-            <input type="button" value="+" class="math-func add">
-            <input type="button" value="+/-" class="math-func plus-minus">
-            <input type="button" value="0" class="number zero">
-            <input type="button" value="." class="decimal">
-            <input type="button" value="=" class="math-func calculate">
-            <input type="button" value="xy" class="math-func exponent">
-            <input type="button" value="π" class="math-func pi">
-            <input type="button" value="R0" class="math-func round-x">
-            <input type="button" value="R2" class="math-func round-d">
-
+          <form>
+            <input type="button" value="mc" class="memory memory-clear" />
+            <input type="button" value="mr" class="memory memory-recall" />
+            <input type="button" value="m+" class="memory memory-plus" />
+            <input type="button" value="m-" class="memory memory-minus" />
+            <input type="button" value="√x" class="math-func square-root" />
+            <input type="reset" value="CE" class="clear clear-entry" />
+            <input type="button" value="%" class="math-func percent" />
+            <input type="button" value="÷" class="math-func divide" />
+            <input type="button" value="7" class="number seven" />
+            <input type="button" value="8" class="number eight" />
+            <input type="button" value="9" class="number nine" />
+            <input type="button" value="x" class="math-func multiply" />
+            <input type="button" value="4" class="number four" />
+            <input type="button" value="5" class="number five" />
+            <input type="button" value="6" class="number six" />
+            <input type="button" value="-" class="math-func subtract" />
+            <input type="button" value="1" class="number one" />
+            <input type="button" value="2" class="number two" />
+            <input type="button" value="3" class="number three" />
+            <input type="button" value="+" class="math-func add" />
+            <input type="button" value="+/-" class="math-func plus-minus" />
+            <input type="button" value="0" class="number zero" />
+            <input type="button" value="." class="number decimal" />
+            <input type="button" value="=" class="math-func calculate" />
+            <input type="button" value="xy" class="math-func exponent" />
+            <input type="button" value="π" class="math-func pi" />
+            <input type="button" value="R0" class="math-func round-x" />
+            <input type="button" value="R2" class="math-func round-d" />
+          </form>
         </div>
-        
+      </div>
     </div>
-   </div>
-    
-        
 
-   
     <!-- link jquery -->
+    <footer>
+      <!-- fonts are awesome linkedin, twitter and github -->
+      <ul>
+        <li>
+          <a href="" target="_blank" class="fa fa-linkedin"></a>
+        </li>
+        <li>
+          <a href="" target="_blank" class="fa fa-twitter"></a>
+        </li>
+        <li>
+          <a href="" target="_blank" class="fa fa-github"></a>
+        </li>
+      </ul>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="app.js"></script>
-</body>
-
+  </body>
 </html>
