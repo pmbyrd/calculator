@@ -33,4 +33,4 @@ const operate = (operator, a, b) => {
 };
 
 // make it so that way the CE does not display to the screen
-$clear.on("click", function () {
+$clear.on("click", function () {})

@@ -1,44 +1,54 @@
 console.log('Hello World!');
 // intialize varaibles
 // *elements from the html
-const $display = $(".result");
-const $buttons = $(".button");
-// get the clear button by the data-type clear
+const $displayResult = $(".result");
+const $clear = $(".clear");
+const $numbers = $(".number");
+const $form = $("form");
+const $operators = $(".math-operator");
+const $memory = $(".memory");
+const $func = $(".math-func");
+const $round = $(".math-round");
+
+
 
 // *elements to added by me
 let $displayValue = "";
 
+
 // *event listeners
-$buttons.on("click", updateDisplay)
-$("#operate").on("click", function() {
-    console.log("clicked")
-})
-// $("#operate").on("click", operate)
-// when a button is clicked that value is added to the display
+$clear.on("click", function () {
+    console.debug("clear button clicked");
+    $displayValue = "";
+    $displayResult.text($displayValue);
+});
 
-// function operate
+$form.on("submit", function (e) {
+    console.debug("form submitted");
+    e.preventDefault();
+    if(($(this).hasClass("number"))){
+        console.log("number clicked");
+    }
+});
 
-// each button with the class operate will perfrom a different action
+$numbers.on("click", getNumbers);
+$operators.on("click", getOperator);
 
-// *Operate will perform the evaluation of the expression
-// function operate() {
-//     console.debug("operate");
-//     if ($displayValue === "") return // *if the display is empty do nothing
-//     if (!$displayValue === "") {
-//         console.log("operate");
-//         if ($displayValue.includes("+")) {
-//             let $split = $displayValue.split("+")
-//             let $result = Number($split[0]) + Number($split[1])
-//             $displayValue = $result;
-//             $display.text($result);
-//         }
-//     }   
-//     console.log($displayValue)
-// }
-
-function updateDisplay() {
-    console.log("updateDisplay");
-    $displayValue += $(this).text();
-    $display.text($displayValue);
-    console.log($displayValue)
+// *functions
+function getNumbers() {
+    console.debug("getNumbers() called");
+  $displayValue += $(this).val();
+  $displayResult.text($displayValue);
+  console.log("clicked", $(this).val());
 }
+
+function getOperator() {
+    console.debug("getOperator() called");
+    $displayValue += $(this).val();
+    $displayResult.text($displayValue);
+  console.log("clicked", $(this).val());
+}
+
+
+
+
