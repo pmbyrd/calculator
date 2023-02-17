@@ -67,22 +67,38 @@ function getMemory() {
   console.log("clicked", $(this).val());
 }
 
-function calculate(a,b, op) {
-    console.debug("calculate() called");
-    // try using the already included text to practice
-    $displayValue = $displayResult.text();
-    if($displayValue.includes("+")) {
-        let [a, b] = $displayValue.split("+");
-        a = Number(a);
-        b = Number(b);
-        op = add(a, b);
-        console.log(a, b, op);
-        $result.text(op);   
-    }
- 
-    
-}
+function calculate(a, b, op) {
+  // store all operators in operators object
+  const operators = {
+    "+": add,
+    "-": subtract,
+    "*": multiply,
+    "÷": divide,
+    "^": exponent,
+    "%": percent,
+    "±": negate,
+    "√": squareRoot,
+    π: circumfrance,
+    "x^y": exponent,
+  };
 
+  console.debug("calculate() called");
+  $displayValue = $displayResult.text();
+
+  // check for every operator in display value
+  Object.keys(operators).forEach((operator) => {
+    if ($displayValue.includes(operator)) {
+      let [a, b] = $displayValue.split(operator);
+      a = Number(a);
+      b = Number(b);
+      // call the corresponding function depending on operator used
+      op = operators[operator](a, b);
+      console.log(a, b, op);
+      // set the result
+      $result.text(op);
+    }
+  });
+}
 
 // *math functions
 
@@ -109,4 +125,7 @@ function negate(a) {
 }
 function squareRoot(a) {
   return Math.sqrt(a);
+}
+function circumfrance(a) {
+  return 2 * Math.PI * a;
 }
