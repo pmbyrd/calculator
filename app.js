@@ -1,114 +1,17 @@
-// const $displayResult = $(".input-result");
-// const $clear = $(".clear");
-// const $numbers = $(".number");
-// const $form = $("form");
-// const $operators = $(".math-operator");
-// const $memory = $(".memory");
-// const $func = $(".math-func");
-// const $round = $(".math-round");
-// let $result = $(".result");
-// let displayValue = "";
+//TODO use funtion to handle the arithmatic 
 
-// // *event listeners
-// $clear.on("click", function () {
-//   console.debug("clear button clicked");
-//   displayValue = "";
-//   $displayResult.text(displayValue);
-// });
+//TODO will need to handle 3 variables at a time for arithmatic (2 numbers and an operator)
 
-// $form.on("submit", function (e) {
-//   console.debug("form submitted");
-//   e.preventDefault();
-//   calculate();
-//   console.log("clicked", "form submitted");
-// });
+//TODO create an operate function. It should apple the correct operator and call the correct arithmatic function
 
-// $numbers.on("click", getNumbers);
-// $operators.on("click", getOperator);
+//TODO HTML must include an =, a display and a clear
 
-// // *functions
-// function getNumbers() {
-//   console.debug("getNumbers() called");
-//   displayValue += $(this).val();
-//   $displayResult.text(displayValue);
-//   console.log("clicked", $(this).val());
-// }
+//TODO Create a fucntion that populates the display, should store the #s in a variable for the next step
 
-// function getOperator() {
-//   console.debug("getOperator() called");
-//   displayValue += $(this).val();
-//   $displayResult.text(displayValue);
-//   console.log("clicked", $(this).val());
-// }
+//TODO Make the calculator work.  Srote the 1st and 2nd #s from the user inpurt and call the operate()
+//Figure how to store all the values and correctly call the operate()
 
-// function getFunc() {
-//   console.debug("getFunc() called");
-//   displayValue += $(this).val();
-//   $displayResult.text(displayValue);
-//   console.log("clicked", $(this).val());
-// }
-
-// function getRound() {
-//   console.debug("getRound() called");
-//   displayValue += $(this).val();
-//   $displayResult.text(displayValue);
-//   console.log("clicked", $(this).val());
-// }
-
-// function getMemory() {
-//   console.debug("getMemory() called");
-//   displayValue += $(this).val();
-//   $displayResult.text(displayValue);
-//   console.log("clicked", $(this).val());
-// }
-
-// function calculate(displayValue) {
-//   const operatorsKeysAndValues = {
-//     "+": add,
-//     "-": subtract,
-//     "*": multiply,
-//     "÷": divide,
-//     "±": negate,
-//     π: circumfrance,
-//     "x^y": exponent,
-//   };
-//   console.debug("calculate() called");
-//   const operators = Object.keys(operatorsKeysAndValues);
-//   console.log(operators);
-//   displayValue = $displayResult.text();
-//   console.log(displayValue);
-//   // loop through the operators
-//   // function sum(n) {
-//   //     if (n <= 1) {
-//   //       return n;
-//   //     }
-//   //     return n + sum(n - 1);
-//   //   }
-//   let displayValueArray = displayValue.split("");
-//   displayValueArray.map(function(operators, index) {
-//       console.table(operators, index);
-//   })
-//   for (let i = 0; i < operators.length; i++) {
-//     if (displayValue.includes(operators[i])) {
-//       let [a, b] = displayValue.split(operators[i]);
-//       a = Number(a);
-//       b = Number(b);
-//       let restOfValues = displayValue.split(operators[i]);
-      
-//     //   I need to store the rest of the values to access them again later
-//     // I am currently only storing three values at a time but if there are more than three they disappear
-//         console.log(restOfValues);
-//       let result = operatorsKeysAndValues[operators[i]](a, b);
-//       console.log(`${a} ${operators[i]} ${b} = ${result}`);
-//       $result.text(result);
-//       console.log(displayValue);
-//       return operatorsKeysAndValues[operators[i]](a, b);
-//     } 
-//   }
-// }
-
-// *math functions
-
+//TODO operate each pair of #s @ a time w/ the operator, update display, store value to hold for the next operation.  Round the decimals to not overflow the displya.  Careful w/ = sign a lot of #s. Clear should erase all values.
 function add(a, b = 0) {
   return a + b;
 }
@@ -127,6 +30,7 @@ function exponent(a, b) {
 function percent(a) {
   return a / 100;
 }
+//TODO add conditionals to this negate function
 function negate(a) {
   return -a;
 }
