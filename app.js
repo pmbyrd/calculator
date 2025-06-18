@@ -1,4 +1,4 @@
-//TODO use funtion to handle the arithmatic 
+//TODO use funtion to handle the arithmatic
 
 //TODO will need to handle 3 variables at a time for arithmatic (2 numbers and an operator)
 
@@ -12,6 +12,19 @@
 //Figure how to store all the values and correctly call the operate()
 
 //TODO operate each pair of #s @ a time w/ the operator, update display, store value to hold for the next operation.  Round the decimals to not overflow the displya.  Careful w/ = sign a lot of #s. Clear should erase all values.
+//make sure all numbers are preceived as numbers
+
+function handleNumbers(e) {
+  let number;
+  if (e.target.classList.contains("number")) {
+    number = parseInt(e.target.value);
+  }
+  return number;
+}
+
+function handleOpertors(e) {}
+document.addEventListener("click", handleNumbers);
+convertNumbers(numbers);
 function add(a, b = 0) {
   return a + b;
 }
