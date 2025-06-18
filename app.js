@@ -22,9 +22,22 @@ function handleNumbers(e) {
   return number;
 }
 
+function handleOperator(e) {
+  let operator
+  let mathFunction
+  if (e.target.classList.contains("math-operator")) {
+    console.log(e.target.className)
+    operator = e.target.value
+    let target = e.target.className.split(" ")
+    mathFunction = target[1]
+    console.log(mathFunction)
+  }
+  return operator
+}
+
 function handleOpertors(e) {}
 document.addEventListener("click", handleNumbers);
-convertNumbers(numbers);
+document.addEventListener("click", handleOperator);
 function add(a, b = 0) {
   return a + b;
 }
