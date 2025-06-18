@@ -14,30 +14,67 @@
 //TODO operate each pair of #s @ a time w/ the operator, update display, store value to hold for the next operation.  Round the decimals to not overflow the displya.  Careful w/ = sign a lot of #s. Clear should erase all values.
 //make sure all numbers are preceived as numbers
 
-function handleNumbers(e) {
-  let number;
-  if (e.target.classList.contains("number")) {
-    number = parseInt(e.target.value);
-  }
-  return number;
+function convertToNumber(num) {
+ return parseInt(num) 
 }
 
-function handleOperator(e) {
-  let operator
-  let mathFunction
-  if (e.target.classList.contains("math-operator")) {
-    console.log(e.target.className)
-    operator = e.target.value
-    let target = e.target.className.split(" ")
-    mathFunction = target[1]
-    console.log(mathFunction)
-  }
-  return operator
+const operators = {
+ "+" : (a, b) => a + b,
+ "-" : (a, b) => a - b,
+ "*" : (a, b) => a * b,
+ "/" : (a, b) => a / b,
+ "^" : (a, b) => a ** b,
+ "%" : (a) => a / 100 ,
+ "π" : (a) => 2 * Math.PI * a ,
+
 }
 
-function handleOpertors(e) {}
-document.addEventListener("click", handleNumbers);
-document.addEventListener("click", handleOperator);
+const clear = document.querySelector(".clear")
+const input = document.querySelector(".input-result")
+console.log(clear, input.textContent)
+
+function clearInput() {
+  console.log(input.textContent)
+  input.textContent = ""
+}
+clear.addEventListener("click", clearInput)
+function operate(values) {
+  
+}
+
+function handleInput(num, num, operator) {
+  const input = document.querySelector(".input-result")
+  console.log(input.textContent)
+  //turn the input into thing that I can calculate
+  let values = input.textContent.split(" ")
+  console.log(values)
+}
+
+// function handleNumbers(e) {
+//   let number;
+//   if (e.target.classList.contains("number")) {
+//     number = parseInt(e.target.value);
+//   }
+//   return number;
+// }
+
+// function handleOperator(e) {
+//   let operator
+//   let mathFunction
+//   if (e.target.classList.contains("math-operator")) {
+//     console.log(e.target.className)
+//     operator = e.target.value
+//     let target = e.target.className.split(" ")
+//     mathFunction = target[1]
+//     console.log(mathFunction)
+//   }
+//   return [operator, mathFunction]
+// }
+
+// handleInput()
+// function handleOpertors(e) {}
+// document.addEventListener("click", handleNumbers);
+// document.addEventListener("click", handleOperator);
 function add(a, b = 0) {
   return a + b;
 }
@@ -66,3 +103,4 @@ function squareRoot(a) {
 function circumfrance(a) {
   return 2 * Math.PI * a;
 }
+
