@@ -29,8 +29,11 @@ const operators = {
 
 }
 
+
+
 const clear = document.querySelector(".clear")
 const input = document.querySelector(".input-result")
+const pad = document.querySelector(".pad")
 console.log(clear, input.textContent)
 
 function clearInput() {
@@ -42,13 +45,13 @@ function operate(values) {
   
 }
 
-function handleInput(num, num, operator) {
-  const input = document.querySelector(".input-result")
-  console.log(input.textContent)
-  //turn the input into thing that I can calculate
-  let values = input.textContent.split(" ")
-  console.log(values)
+function handleInput(e) {
+  let value = e.target.value
+  console.log(value)
+  input.append(value)
 }
+
+pad.addEventListener("click", handleInput)
 
 // function handleNumbers(e) {
 //   let number;
