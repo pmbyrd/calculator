@@ -14,44 +14,59 @@
 //TODO operate each pair of #s @ a time w/ the operator, update display, store value to hold for the next operation.  Round the decimals to not overflow the displya.  Careful w/ = sign a lot of #s. Clear should erase all values.
 //make sure all numbers are preceived as numbers
 
-function convertToNumber(num) {
- return parseInt(num) 
-}
-
 const operators = {
- "+" : (a, b) => a + b,
- "-" : (a, b) => a - b,
- "*" : (a, b) => a * b,
- "/" : (a, b) => a / b,
- "^" : (a, b) => a ** b,
- "%" : (a) => a / 100 ,
- "π" : (a) => 2 * Math.PI * a ,
+  "+": add(),
+  "-": subtract(),
+  "*": multiply(),
+  "/": divide(),
+  "^": exponent(),
+};
 
-}
+const mathFunctions = {
+  "%": (a) => a / 100,
+  π: (a) => 2 * Math.PI * a,
+};
 
+const clear = document.querySelector(".clear");
+const input = document.querySelector(".input-result");
+const pad = document.querySelector(".pad");
+const evaluate = document.querySelector(".evaluate");
 
-
-const clear = document.querySelector(".clear")
-const input = document.querySelector(".input-result")
-const pad = document.querySelector(".pad")
-console.log(clear, input.textContent)
-
-function clearInput() {
-  console.log(input.textContent)
-  input.textContent = ""
-}
-clear.addEventListener("click", clearInput)
-function operate(values) {
-  
+function convertToNumber(num) {
+  return parseInt(num);
 }
 
 function handleInput(e) {
-  let value = e.target.value
-  console.log(value)
-  input.append(value)
+  let value = e.target.value;
+  if (e.target.value === "CE") return
+  console.log(value);
+  input.append(value);
 }
 
-pad.addEventListener("click", handleInput)
+function getOperatorKeys() {
+  const keys = Object.keys(operators);
+  return keys;
+}
+//this function should handle the the operators to perfrom arthimatic operations
+function handleOperator(a, b, operators) {
+  let keys = getOperatorKeys();
+  let values = input.textContent;
+  let operator = keys.find((key) => values.includes(key));
+  values.split("operator")
+  console.log(operator, values)
+  if (operator === true) {
+
+  }
+}
+
+handleOperator();
+
+//event listeneres places here to help add to clarity of reading
+pad.addEventListener("click", handleInput);
+clear.addEventListener("click", ()=>{
+  input.textContent = ""
+  console.log(input.textContent)
+});
 
 // function handleNumbers(e) {
 //   let number;
@@ -106,4 +121,3 @@ function squareRoot(a) {
 function circumfrance(a) {
   return 2 * Math.PI * a;
 }
-
