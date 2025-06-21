@@ -15,11 +15,11 @@
 //make sure all numbers are preceived as numbers
 
 const operators = {
-  "+": add(),
-  "-": subtract(),
-  "*": multiply(),
-  "/": divide(),
-  "^": exponent(),
+  "+": (a, b) => a + b,
+  "-": (a, b) => a - b,
+  "*": (a, b) => a * b,
+  "/": (a, b) => a / b,
+  "**": (a, b) => a ** b,
 };
 
 const mathFunctions = {
@@ -27,12 +27,10 @@ const mathFunctions = {
   π: (a) => 2 * Math.PI * a,
 };
 
-let a = "";
-let b = "";
 const clear = document.querySelector(".clear");
 const input = document.querySelector(".input-result");
 const pad = document.querySelector(".pad");
-const evaluate = document.querySelector(".evaluate");
+const evaluateBtn = document.querySelector(".evaluate");
 const result = document.querySelector(".result");
 
 function convertToNumber(num) {
@@ -45,7 +43,6 @@ function handleInput(e) {
   if (e.target.value === "CE") return;
   if (e.target.value === "=") return;
   console.log(value);
-
   input.append(value);
 }
 
@@ -53,40 +50,48 @@ function getOperatorKeys() {
   const keys = Object.keys(operators).join(" ");
   return keys;
 }
-//this function should handle the the operators to perfrom arthimatic operations
+
 function getOperator() {
   let keys = getOperatorKeys();
-  let values = input.textContent;
-  for (index of values) {
+  let content = input.textContent;
+  for (index of content) {
     for (key of keys) {
-      if (values.includes(key)) {
-       let keyIndex = values.indexOf(key)
-       return {
-        operator: key,
-        index: keyIndex,
-       }
+      if (content.includes(key)) {
+        let keyIndex = content.indexOf(key);
+        return {
+          operator: key,
+          index: keyIndex,
+        };
       }
     }
   }
-  return "hello";
 }
 
 function getVariables() {
-  let operatorObj = getOperator()
-  let operator = operatorObj.operator
-  let index = operatorObj.index
-  let content = input.textContent
-  if (!input.textContent.includes(operator))  {
-    console.log("no operator found")
+  let operatorObj = getOperator();
+  let operator = operatorObj.operator;
+  let index = operatorObj.index;
+  let content = input.textContent;
+  if (!input.textContent.includes(operator)) {
+    console.log("no operator found");
   } else {
-    console.log(true, operator)
+    console.log(true, operator);
   }
-  let [a, b] = content.split(operator)
-  console.log(`a: ${a}, b: ${b}`)
-  return [parseInt(a), parseInt(b), operator]
+  let [a, b] = content.split(operator);
+  return [parseInt(a), parseInt(b), operator];
 }
 
-
+//TODO find away to apply the correct operator to the function
+function evaluate(a, b, operator) {
+  //this function should only be called with the text content has the 3 variables that can be called
+  [a, b, operator] = getVariables();
+  console.log(`a: ${a}, b: ${b}, operator: ${operator}`);
+  console.log(typeof a);
+  let mathFunc = operators[operator]
+  console.log(mathFunc)
+  return mathFunc(a,b)
+}
+//TODO find a way to limit the text input that after one math-operator has been addded then another one can not be added.
 
 //event listeneres places here to help add to clarity of reading
 pad.addEventListener("click", handleInput);
@@ -94,33 +99,8 @@ clear.addEventListener("click", () => {
   input.textContent = "";
   console.log(input.textContent);
 });
-evaluate.addEventListener("click", getOperator);
+evaluateBtn.addEventListener("click", getOperator);
 
-// function handleNumbers(e) {
-//   let number;
-//   if (e.target.classList.contains("number")) {
-//     number = parseInt(e.target.value);
-//   }
-//   return number;
-// }
-
-// function handleOperator(e) {
-//   let operator
-//   let mathFunction
-//   if (e.target.classList.contains("math-operator")) {
-//     console.log(e.target.className)
-//     operator = e.target.value
-//     let target = e.target.className.split(" ")
-//     mathFunction = target[1]
-//     console.log(mathFunction)
-//   }
-//   return [operator, mathFunction]
-// }
-
-// handleInput()
-// function handleOpertors(e) {}
-// document.addEventListener("click", handleNumbers);
-// document.addEventListener("click", handleOperator);
 function add(a, b = 0) {
   return a + b;
 }
