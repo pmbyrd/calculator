@@ -24,25 +24,22 @@ const operators = {
 
 const mathFunctions = {
   "%": (a) => a / 100,
-  π: (a) => 2 * Math.PI * a,
+  "π": (a) => 2 * Math.PI * a,
+  //TODO add in negate
+  "+-": (a) => -a
 };
 
 const clear = document.querySelector(".clear");
 const input = document.querySelector(".input-result");
 const pad = document.querySelector(".pad");
 const evaluateBtn = document.querySelector(".evaluate");
-const result = document.querySelector(".result");
-
-function convertToNumber(num) {
-  return parseInt(num);
-}
+const result = document.querySelector(".result")
 
 function handleInput(e) {
   let value = e.target.value;
   let operator;
   if (e.target.value === "CE") return;
   if (e.target.value === "=") return;
-  console.log(value);
   input.append(value);
 }
 
@@ -70,7 +67,6 @@ function getOperator() {
 function getVariables() {
   let operatorObj = getOperator();
   let operator = operatorObj.operator;
-  let index = operatorObj.index;
   let content = input.textContent;
   if (!input.textContent.includes(operator)) {
     console.log("no operator found");
@@ -81,15 +77,19 @@ function getVariables() {
   return [parseInt(a), parseInt(b), operator];
 }
 
-//TODO find away to apply the correct operator to the function
-function evaluate(a, b, operator) {
-  //this function should only be called with the text content has the 3 variables that can be called
+function operate(a, b, operator) {
+  let sum
   [a, b, operator] = getVariables();
-  console.log(`a: ${a}, b: ${b}, operator: ${operator}`);
-  console.log(typeof a);
   let mathFunc = operators[operator]
-  console.log(mathFunc)
-  return mathFunc(a,b)
+  return sum = mathFunc(a,b)
+}
+
+function updateResult() {
+  //when evaluateBtn is pressed I want to change show the results of the operate to the result and to clear the input
+  let sum = operate()
+  console.log(sum)
+  result.textContent = sum
+  input.textContent = ""
 }
 //TODO find a way to limit the text input that after one math-operator has been addded then another one can not be added.
 
@@ -99,33 +99,4 @@ clear.addEventListener("click", () => {
   input.textContent = "";
   console.log(input.textContent);
 });
-evaluateBtn.addEventListener("click", getOperator);
-
-function add(a, b = 0) {
-  return a + b;
-}
-function subtract(a, b = 0) {
-  return a - b;
-}
-function multiply(a, b) {
-  return a * b;
-}
-function divide(a, b) {
-  return a / b;
-}
-function exponent(a, b) {
-  return a ** b;
-}
-function percent(a) {
-  return a / 100;
-}
-//TODO add conditionals to this negate function
-function negate(a) {
-  return -a;
-}
-function squareRoot(a) {
-  return Math.sqrt(a);
-}
-function circumfrance(a) {
-  return 2 * Math.PI * a;
-}
+evaluateBtn.addEventListener("click", updateResult);
