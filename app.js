@@ -27,10 +27,13 @@ const mathFunctions = {
   π: (a) => 2 * Math.PI * a,
 };
 
+let a = "";
+let b = "";
 const clear = document.querySelector(".clear");
 const input = document.querySelector(".input-result");
 const pad = document.querySelector(".pad");
 const evaluate = document.querySelector(".evaluate");
+const result = document.querySelector(".result");
 
 function convertToNumber(num) {
   return parseInt(num);
@@ -38,35 +41,60 @@ function convertToNumber(num) {
 
 function handleInput(e) {
   let value = e.target.value;
-  if (e.target.value === "CE") return
+  let operator;
+  if (e.target.value === "CE") return;
+  if (e.target.value === "=") return;
   console.log(value);
+
   input.append(value);
 }
 
 function getOperatorKeys() {
-  const keys = Object.keys(operators);
+  const keys = Object.keys(operators).join(" ");
   return keys;
 }
 //this function should handle the the operators to perfrom arthimatic operations
-function handleOperator(a, b, operators) {
+function getOperator() {
   let keys = getOperatorKeys();
   let values = input.textContent;
-  let operator = keys.find((key) => values.includes(key));
-  values.split("operator")
-  console.log(operator, values)
-  if (operator === true) {
-
+  for (index of values) {
+    for (key of keys) {
+      if (values.includes(key)) {
+       let keyIndex = values.indexOf(key)
+       return {
+        operator: key,
+        index: keyIndex,
+       }
+      }
+    }
   }
+  return "hello";
 }
 
-handleOperator();
+function getVariables() {
+  let operatorObj = getOperator()
+  let operator = operatorObj.operator
+  let index = operatorObj.index
+  let content = input.textContent
+  if (!input.textContent.includes(operator))  {
+    console.log("no operator found")
+  } else {
+    console.log(true, operator)
+  }
+  let [a, b] = content.split(operator)
+  console.log(`a: ${a}, b: ${b}`)
+  return [parseInt(a), parseInt(b), operator]
+}
+
+
 
 //event listeneres places here to help add to clarity of reading
 pad.addEventListener("click", handleInput);
-clear.addEventListener("click", ()=>{
-  input.textContent = ""
-  console.log(input.textContent)
+clear.addEventListener("click", () => {
+  input.textContent = "";
+  console.log(input.textContent);
 });
+evaluate.addEventListener("click", getOperator);
 
 // function handleNumbers(e) {
 //   let number;
