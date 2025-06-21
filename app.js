@@ -24,22 +24,28 @@ const operators = {
 
 const mathFunctions = {
   "%": (a) => a / 100,
-  "π": (a) => 2 * Math.PI * a,
+  π: (a) => 2 * Math.PI * a,
   //TODO add in negate
-  "+-": (a) => -a
+  "+-": (a) => -a,
 };
 
 const clear = document.querySelector(".clear");
 const input = document.querySelector(".input-result");
 const pad = document.querySelector(".pad");
 const evaluateBtn = document.querySelector(".evaluate");
-const result = document.querySelector(".result")
+const result = document.querySelector(".result");
+let mathOperator = 0;
 
 function handleInput(e) {
   let value = e.target.value;
-  let operator;
   if (e.target.value === "CE") return;
   if (e.target.value === "=") return;
+  if (e.target.classList.contains("math-operator")) {
+    if (input.textContent.length === 0) return 
+    mathOperator ++
+    console.log(mathOperator)
+  }
+  if (mathOperator > 1) return
   input.append(value);
 }
 
@@ -78,18 +84,19 @@ function getVariables() {
 }
 
 function operate(a, b, operator) {
-  let sum
+  let sum;
   [a, b, operator] = getVariables();
-  let mathFunc = operators[operator]
-  return sum = mathFunc(a,b)
+  let mathFunc = operators[operator];
+  return (sum = mathFunc(a, b));
 }
 
 function updateResult() {
   //when evaluateBtn is pressed I want to change show the results of the operate to the result and to clear the input
-  let sum = operate()
-  console.log(sum)
-  result.textContent = sum
-  input.textContent = ""
+  let sum = operate();
+  console.log(sum);
+  result.textContent = sum;
+  input.textContent = "";
+  mathOperator = 0
 }
 //TODO find a way to limit the text input that after one math-operator has been addded then another one can not be added.
 
