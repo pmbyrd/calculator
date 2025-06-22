@@ -1,11 +1,3 @@
-//TODO HTML must include an =, a display and a clear
-
-//TODO Make the calculator work.  Srote the 1st and 2nd #s from the user inpurt and call the operate()
-//Figure how to store all the values and correctly call the operate()
-
-//TODO operate each pair of #s @ a time w/ the operator, update display, store value to hold for the next operation.  Round the decimals to not overflow the displya.  Careful w/ = sign a lot of #s. Clear should erase all values.
-//make sure all numbers are preceived as numbers
-
 const operators = {
   "+": (a, b) => a + b,
   "-": (a, b) => a - b,
@@ -20,7 +12,6 @@ const mathFunctions = {
   "√x": (a) => Math.sqrt(a),
 };
 
-const negate = "±";
 
 const clear = document.querySelector(".clear");
 const input = document.querySelector(".input-result");
@@ -28,12 +19,14 @@ const pad = document.querySelector(".pad");
 const evaluateBtn = document.querySelector(".evaluate");
 const result = document.querySelector(".result");
 const mathFunctionBtns = document.querySelectorAll(".math-func");
+const negate = document.querySelector(".negate")
 let mathOperator = 0;
 
 function handleInput(e) {
   let value = e.target.value;
   if (e.target.value === "CE") return;
   if (e.target.value === "=") return;
+  if (e.target.value === "±") return;
   if (e.target.classList.contains("math-func")) return;
   if (e.target.classList.contains("math-operator")) {
     if (input.textContent.length === 0) return;
@@ -123,7 +116,9 @@ function updateResult(sum) {
   mathOperator = 0;
 }
 
-// TODO handle misc inputs
+function handleNegate(a, b) {
+ console.log("inside the negate function") 
+}
 
 //event listeneres placed here to help add with clarity
 pad.addEventListener("click", handleInput);
@@ -134,3 +129,4 @@ evaluateBtn.addEventListener("click", updateResult);
 mathFunctionBtns.forEach((btn) => {
   addEventListener("click", handleMathFunction);
 });
+negate.addEventListener("click", handleNegate)
