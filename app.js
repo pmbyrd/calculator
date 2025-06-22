@@ -72,7 +72,8 @@ function getVariables() {
     console.log(true, operator);
   }
   let [a, b] = content.split(operator);
-  return [parseInt(a), parseInt(b), operator];
+  console.log(+a, +b)
+  return [+a, +b, operator];
 }
 
 function operate(a, b, operator) {
@@ -80,6 +81,10 @@ function operate(a, b, operator) {
   [a, b, operator] = getVariables();
   let mathFunc = operators[operator];
   sum = mathFunc(a, b);
+  return roundDecimal(sum)
+}
+
+function roundDecimal(sum){
   if (sum % 1 !== 0) {
     sum = Math.round(sum * 100) / 100;
   }
