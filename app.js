@@ -1,12 +1,4 @@
-//TODO use funtion to handle the arithmatic
-
-//TODO will need to handle 3 variables at a time for arithmatic (2 numbers and an operator)
-
-//TODO create an operate function. It should apple the correct operator and call the correct arithmatic function
-
 //TODO HTML must include an =, a display and a clear
-
-//TODO Create a fucntion that populates the display, should store the #s in a variable for the next step
 
 //TODO Make the calculator work.  Srote the 1st and 2nd #s from the user inpurt and call the operate()
 //Figure how to store all the values and correctly call the operate()
@@ -18,7 +10,7 @@ const operators = {
   "+": (a, b) => a + b,
   "-": (a, b) => a - b,
   "*": (a, b) => a * b,
-  "/": (a, b) => a / b,
+  "÷": (a, b) => a / b,
   "**": (a, b) => a ** b,
 };
 
@@ -41,11 +33,11 @@ function handleInput(e) {
   if (e.target.value === "CE") return;
   if (e.target.value === "=") return;
   if (e.target.classList.contains("math-operator")) {
-    if (input.textContent.length === 0) return 
-    mathOperator ++
-    console.log(mathOperator)
+    if (input.textContent.length === 0) return;
+    mathOperator++;
+    console.log(mathOperator);
   }
-  if (mathOperator > 1) return
+  if (mathOperator > 1) return;
   input.append(value);
 }
 
@@ -87,7 +79,11 @@ function operate(a, b, operator) {
   let sum;
   [a, b, operator] = getVariables();
   let mathFunc = operators[operator];
-  return (sum = mathFunc(a, b));
+  sum = mathFunc(a, b);
+  if (sum % 1 !== 0) {
+    sum = Math.round(sum * 100) / 100;
+  }
+  return sum;
 }
 
 function updateResult() {
@@ -96,14 +92,14 @@ function updateResult() {
   console.log(sum);
   result.textContent = sum;
   input.textContent = "";
-  mathOperator = 0
+  mathOperator = 0;
 }
-//TODO find a way to limit the text input that after one math-operator has been addded then another one can not be added.
 
-//event listeneres places here to help add to clarity of reading
+// TODO handle misc inputs
+
+//event listeneres placed here to help add with clarity
 pad.addEventListener("click", handleInput);
 clear.addEventListener("click", () => {
   input.textContent = "";
-  console.log(input.textContent);
 });
 evaluateBtn.addEventListener("click", updateResult);
